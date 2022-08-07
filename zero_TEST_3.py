@@ -2,6 +2,7 @@
 
 #from tkinter import X
 import pgzrun       # import files to run the pyzero package
+import random
 
 class Square:
 
@@ -37,13 +38,12 @@ class Square:
         screen.draw.filled_rect(rectangle, (self.colour))                  
 
 def update():
-    global red_square, green_square,blue_square
+
 
     for index in range(0,len(squares)):
         squares[index].move()
 
 
-# previously    red_square.move()
 
 
 
@@ -54,19 +54,20 @@ def draw():                                             # create a function call
     for index in range(0,len(squares)):
         squares[index].render()
 
-# previously        green_square.render()
+
    
 
 
 WIDTH = 500         # this is setting the window size
 HEIGHT = 300
-#  OBJECT DETAILS (x,y,velX,velY,width,height, colour)
 
-red_square = Square(100,100,2,2,30,30,(255,0,0))
-green_square = Square(5,5,1,18,10,14,(10,200,10))
-blue_square = Square(20,5,9,1,20,15,(0,10,210))
+#(self,x,y,velX,velY,width,height, colour):
+squares = []
+for count in range(0,20):
+    squares.append(Square(random.randint(0,WIDTH-1),random.randint(0,HEIGHT-1),random.randint(1,5),
+        random.randint(1,7),random.randint(5,50),random.randint(5,50),
+        (random.randint(0,255),random.randint(0,255),random.randint(0,255))))
 
-squares = [red_square, green_square, blue_square]
 
 pgzrun.go()
 
